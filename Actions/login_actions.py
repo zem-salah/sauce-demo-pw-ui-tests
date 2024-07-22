@@ -1,5 +1,4 @@
 from data.user import User
-from page_object.login_form import LoginFrom
 from page_object.page_factory import PageFactory
 from page_object.products_page import ProductsPage
 
@@ -13,7 +12,7 @@ class Login:
     @classmethod
     def set_page(cls, page):
         cls.page = page
-        cls.login_form = LoginFrom(page)
+        cls.login_form = PageFactory(cls.page)('login')
 
     @classmethod
     def login_as(cls, user: User) -> ProductsPage:
