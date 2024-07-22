@@ -1,6 +1,8 @@
 from dotenv import load_dotenv
 from playwright.sync_api import sync_playwright
 
+from Actions import init_actions_module
+
 
 def before_all(context):
     # load key-value pairs from .env file and set them as env variables
@@ -13,6 +15,7 @@ def before_scenario(context, scenario):
     context.browser = context.pw.chromium.launch(
         headless=False, channel="chrome")
     context.page = context.browser.new_page()
+    init_actions_module(context)
 
 
 def after_scenario(context, scenario):
