@@ -2,6 +2,7 @@ from dotenv import load_dotenv
 from playwright.sync_api import sync_playwright
 
 from Actions import init_actions_module
+from Assertion import init_assertions_module
 
 
 def before_all(context):
@@ -16,6 +17,7 @@ def before_scenario(context, scenario):
         headless=False, channel="chrome")
     context.page = context.browser.new_page()
     init_actions_module(context)
+    init_assertions_module(context)
 
 
 def after_scenario(context, scenario):
