@@ -1,8 +1,10 @@
 from behave import when
 
 from Actions.login_actions import Login
+from data.user import User
 
 
-@when('he logs in')
-def user_logs_in(context):
+@when('the user logs in as "{user_role}"')
+def impl(context, user_role):
+    context.current_user = User(user_role)
     context.current_page = Login.login_as(context.current_user)
