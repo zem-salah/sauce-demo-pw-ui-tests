@@ -6,19 +6,32 @@ from data.products import Product
 from page_object.page_factory import PageFactory
 
 
-class AssertThat:
-
-    def __new__(cls, obj):
-        return obj
-
-
-class Cart:
+class BaseAssertion:
 
     should_init = True
 
     @classmethod
     def set_context(cls, context):
         cls.context = context
+
+
+class AssertThat:
+    """
+    Used to ease readability and access assertion methods
+    """
+
+    def __new__(cls, obj):
+        return obj
+
+
+class Cart(BaseAssertion):
+    """
+    Assertion class that contains checks related to the shopping cart
+    """
+
+    @classmethod
+    def set_context(cls, context):
+        super().set_context(context)
         cls.primary_header = PageFactory(context.page)('primary header')
 
     @classmethod
@@ -31,13 +44,11 @@ class Cart:
         pw_expect(cls.primary_header.cart_badge).not_to_be_visible()
 
 
-class Page:
-
-    should_init = True
-
-    @classmethod
-    def set_context(cls, context):
-        cls.context = context
+class Page(BaseAssertion):
+    """
+    Assertion class that contains checks related to a page (not the playwright
+    Page object, but a page in web context)
+    """
 
     def __init__(self, expected_page_pretty_name):
         self.expected_page_pretty_name = expected_page_pretty_name
@@ -59,13 +70,11 @@ class Page:
         )).to.be.true()
 
 
-class ProductTile:
-
-    should_init = True
-
-    @classmethod
-    def set_context(cls, context):
-        cls.context = context
+class ProductTile(BaseAssertion):
+    """
+    Assertion class that contains checks related to a product cards displayed
+    in the home page after logging in.
+    """
 
     def __init__(self, product: Product):
         self.product_name = product.name

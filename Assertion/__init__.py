@@ -5,13 +5,11 @@ import importlib
 
 def init_assertions_module(context):
     """
-    This method dynamically initialize action classes and add them
-    in behave context object. Each action class is accessible in other
-    parts of the project (should be steps) via context.<class_name>
-    in order to use action methods in those classes.
+    This method dynamically initialize assertion classes and execute
+    a set_context method to pass the behave context to them. This is done
+    to avoid passing context object each time when doing an assertion.
 
-    Example :
-        context.Login.login_as(user)
+    We want to avoid : AssertThat(Page(context, ...)).<do some check>
 
     Args:
         context: The context in which to initialize the actions.
