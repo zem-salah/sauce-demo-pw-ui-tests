@@ -25,6 +25,10 @@ class Cart:
         pw_expect(cls.primary_header.cart_badge).to_have_text(
             expected_number_of_products)
 
+    @classmethod
+    def is_empty(cls):
+        pw_expect(cls.primary_header.cart_badge).not_to_be_visible()
+
 
 class Page:
 

@@ -7,7 +7,7 @@ Feature: Add a product to cart as a standard user
     Given sauce demo login form is visible
     When the user logs in as "standard user"
     Then he should be on "products" page
-     #And the shopping cart is empty
+     And the shopping cart is empty
 
     When he adds "Sauce Labs Backpack" product to cart
     Then the cart should contain "1" product
