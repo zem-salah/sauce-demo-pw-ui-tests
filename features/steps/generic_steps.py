@@ -1,6 +1,6 @@
 from behave import given, then
 
-from Assertion.assertion import AssertThat
+from Assertion.assertion import AssertThat, Page
 from page_object.page_factory import PageFactory
 
 
@@ -11,5 +11,5 @@ def navigate_to_form(context):
 
 @then('he should be on "{page_pretty_name}" page')
 def assert_page_is_visible(context, page_pretty_name):
-    AssertThat.Page(page_pretty_name).is_visible()
-    AssertThat.Page(page_pretty_name).is_current_page()
+    AssertThat(Page(page_pretty_name)).is_visible()
+    AssertThat(Page(page_pretty_name)).is_current_page()
