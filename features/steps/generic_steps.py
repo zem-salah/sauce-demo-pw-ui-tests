@@ -5,7 +5,7 @@ from page_object.page_factory import PageFactory
 
 
 @given('sauce demo login form is visible')
-def navigate_to_form(context):
+def navigate_to_login_form(context):
     PageFactory(context.page)('login').navigate()
 
 
