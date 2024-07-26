@@ -13,8 +13,8 @@ Feature: Add a product to cart as a standard user
     Then the cart should contain "1" product
     And the add to cart button for product "Sauce Labs Backpack" turns into remove button
 
-    When he goes to the cart to checkout
-    Then he should be on "your cart" page
+    When he goes to the shopping cart
+    Then he should be on "shopping cart" page
     And "Sauce Labs Backpack" product is in the cart
 
 
