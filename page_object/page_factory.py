@@ -1,3 +1,4 @@
+from page_object.cart_page import CartPage
 from page_object.login_form import LoginFrom
 from page_object.primary_header import PrimaryHeader
 from page_object.products_page import ProductsPage
@@ -13,6 +14,7 @@ class PageFactory:
             'login': self._create_login_page,
             'primary header': self._create_primary_header_object,
             'products': self._create_products_page,
+            'shopping cart': self._create_shopping_cart_page,
         }
         page_method = page_name_to_creation_function.get(page_name)
         if page_method:
@@ -28,3 +30,6 @@ class PageFactory:
 
     def _create_products_page(self):
         return ProductsPage(self._page)
+
+    def _create_shopping_cart_page(self):
+        return CartPage(self._page)
