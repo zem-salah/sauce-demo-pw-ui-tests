@@ -1,4 +1,4 @@
-Feature: Add a product to cart as a standard user
+Feature: Buy a product from sauce labs as standard user
   In order to purchase a product
   As standard user
   I need to be able to login, add the wanted product in cart and checkout
