@@ -12,4 +12,6 @@ class BasePage:
         return '/'
 
     def navigate(self):
-        self.page.goto(urljoin(os.getenv('BASE_URL'), self.path))
+        # wait_until commit decreased execution time from 1.19s to 700ms
+        self.page.goto(urljoin(os.getenv('BASE_URL'), self.path),
+                       wait_until='commit')
