@@ -10,6 +10,11 @@ def navigate_to_cart(context):
     context.current_page = Navigate.to_shopping_cart()
 
 
+@when('the user proceed to checkout')
+def step_impl(context):
+    context.current_page = Navigate.proceed_to_checkout()
+
+
 @then('the shopping cart is empty')
 def assert_cart_is_empty(context):
     AssertThat(Cart).is_empty()
