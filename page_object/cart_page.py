@@ -8,6 +8,7 @@ class CartPage(BasePage):
 
     def __init__(self, page):
         super().__init__(page)
+        self.checkout_button = page.get_by_test_id('checkout')
 
     def is_visible(self):
         expect(self.page.get_by_test_id('title')).to_have_text('Your Cart')
@@ -23,3 +24,8 @@ class CartPage(BasePage):
     def get_quantity_of_product(self, product: Product) -> int:
         return self.page.get_by_test_id('inventory-item').filter(
             has_text=product.name).get_by_test_id('item-quantity').inner_text()
+
+    def checkout(self):
+        from page_object.page_factory import PageFactory
+        self.checkout_button.click()
+        return PageFactory(self.page)('checkout information')
