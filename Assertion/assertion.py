@@ -33,11 +33,32 @@ class Cart(BaseAssertion):
     def set_context(cls, context):
         super().set_context(context)
         cls.primary_header = PageFactory(context.page)('primary header')
+        cls.cart_page = PageFactory(context.page)('shopping cart')
 
     @classmethod
     def contains_number_of_product(cls, expected_number_of_products):
         pw_expect(cls.primary_header.cart_badge).to_have_text(
             expected_number_of_products)
+
+    @classmethod
+    def contains_product(cls, product: Product):
+        cls._current_product = product
+        expect(product in cls.cart_page.get_products()).to.be.true()
+        return cls
+
+    @classmethod
+    def with_quantity_of(cls, expected_quantity: int):
+        """
+        must be chained with contains_product. This is to ease readability.
+        contains_product must set a _current_product in the class to be used
+        by this method.
+
+        :param expected_quantity: expected quantity to be in cart of
+        _current_product
+        :return: None
+        """
+        expect(cls.cart_page.get_quantity_of_product(cls._current_product))\
+            .to.be.eq(expected_quantity)
 
     @classmethod
     def is_empty(cls):
