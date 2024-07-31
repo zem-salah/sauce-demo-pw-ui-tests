@@ -15,8 +15,7 @@ Feature: Add a product to cart as a standard user
 
     When he goes to the shopping cart
     Then he should be on "shopping cart" page
-    And "Sauce Labs Backpack" product is in the cart
-
+    And "Sauce Labs Backpack" product is in the cart and quantity is "1"
 
     When the user proceed to checkout
     Then he should be on "checkout information" page
