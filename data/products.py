@@ -15,3 +15,6 @@ class Product:
             raise KeyError(
                 f'Product {product_name} does not exist.'
             )
+
+    def __eq__(self, other):
+        return self.name == other.name
