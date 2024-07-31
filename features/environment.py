@@ -5,6 +5,11 @@ from Actions import init_actions_module
 from Assertion import init_assertions_module
 
 
+def after_step(context, step):
+    if step.status == 'failed':
+        context.page.screenshot(path="screenshot.png", full_page=True)
+
+
 def before_all(context):
     # load key-value pairs from .env file and set them as env variables
     load_dotenv()
