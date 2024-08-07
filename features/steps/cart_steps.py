@@ -11,7 +11,7 @@ def navigate_to_cart(context):
 
 
 @when('the user proceed to checkout')
-def step_impl(context):
+def navigate_to_checkout(context):
     context.current_page = Navigate.proceed_to_checkout()
 
 
