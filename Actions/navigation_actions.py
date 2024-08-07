@@ -14,6 +14,12 @@ class Navigate:
         cls.page = page
         cls.primary_header = PageFactory(cls.page)('primary header')
         cls.cart_page = PageFactory(cls.page)('shopping cart')
+        cls.checkout_information_form = PageFactory(cls.page)(
+            'checkout information')
+
+    @classmethod
+    def to_checkout_overview(cls):
+        return cls.checkout_information_form.access_checkout_overview()
 
     @classmethod
     def to_shopping_cart(cls) -> CartPage:
