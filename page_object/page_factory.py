@@ -1,5 +1,6 @@
 from page_object.cart_page import CartPage
 from page_object.checkout_form import CheckoutForm
+from page_object.checkout_overview import CheckoutOverview
 from page_object.login_form import LoginFrom
 from page_object.primary_header import PrimaryHeader
 from page_object.products_page import ProductsPage
@@ -13,6 +14,7 @@ class PageFactory:
     def __call__(self, page_name):
         page_name_to_creation_function = {
             'checkout information': self._create_checkout_information_page,
+            'checkout overview': self._create_checkout_overview_page,
             'login': self._create_login_page,
             'primary header': self._create_primary_header_object,
             'products': self._create_products_page,
@@ -26,6 +28,9 @@ class PageFactory:
 
     def _create_checkout_information_page(self):
         return CheckoutForm(self._page)
+
+    def _create_checkout_overview_page(self):
+        return CheckoutOverview(self._page)
 
     def _create_login_page(self):
         return LoginFrom(self._page)
