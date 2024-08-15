@@ -1,4 +1,5 @@
 from page_object.cart_page import CartPage
+from page_object.checkout_complete import CheckoutComplete
 from page_object.checkout_form import CheckoutForm
 from page_object.checkout_overview import CheckoutOverview
 from page_object.login_form import LoginFrom
@@ -13,6 +14,7 @@ class PageFactory:
 
     def __call__(self, page_name):
         page_name_to_creation_function = {
+            'checkout complete': self._create_checkout_complete_page,
             'checkout information': self._create_checkout_information_page,
             'checkout overview': self._create_checkout_overview_page,
             'login': self._create_login_page,
@@ -25,6 +27,9 @@ class PageFactory:
             return page_method()
         else:
             raise ValueError(f"Page {page_name} not found")
+
+    def _create_checkout_complete_page(self):
+        return CheckoutComplete(self._page)
 
     def _create_checkout_information_page(self):
         return CheckoutForm(self._page)
