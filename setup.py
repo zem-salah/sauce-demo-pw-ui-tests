@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-    name='sauce-demo-ui-tests',
+    name='sauce-demo-pw-ui-tests',
     version='0.1',
     description='demo project for sauce labs ui tests building framework from '
                 'scratch using selenium and python',

@@ -1,6 +1,6 @@
 from behave import then, when
 
-from Actions.products_actions import Products
+from actions.products_actions import Products
 from Assertion.assertion import AssertThat, ProductTile
 from data.products import Product
 

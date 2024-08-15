@@ -1,7 +1,7 @@
 from dotenv import load_dotenv
 from playwright.sync_api import sync_playwright
 
-from Actions import init_actions_module
+from actions import init_actions_module
 from Assertion import init_assertions_module
 
 

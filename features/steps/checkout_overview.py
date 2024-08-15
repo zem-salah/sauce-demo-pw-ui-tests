@@ -1,6 +1,6 @@
 from behave import when
 
-from Actions.navigation_actions import Navigate
+from actions.navigation_actions import Navigate
 
 
 @when('the user completes the checkout')

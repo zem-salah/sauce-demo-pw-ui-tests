@@ -1,6 +1,6 @@
 from behave import given, then, when
 
-from Actions.form_actions import Form
+from actions.form_actions import Form
 from Assertion.assertion import AssertThat, Page
 from page_object.page_factory import PageFactory
 

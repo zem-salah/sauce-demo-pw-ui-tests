@@ -1,7 +1,7 @@
 from behave import then, when
 
 from Assertion.assertion import AssertThat, Cart
-from Actions.navigation_actions import Navigate
+from actions.navigation_actions import Navigate
 from data.products import Product
 
 
