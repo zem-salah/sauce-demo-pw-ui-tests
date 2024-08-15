@@ -16,10 +16,16 @@ class Navigate:
         cls.cart_page = PageFactory(cls.page)('shopping cart')
         cls.checkout_information_form = PageFactory(cls.page)(
             'checkout information')
+        cls.checkout_overview_page = PageFactory(cls.page)(
+            'checkout overview')
 
     @classmethod
     def to_checkout_overview(cls):
         return cls.checkout_information_form.access_checkout_overview()
+
+    @classmethod
+    def to_checkout_complete(cls):
+        return cls.checkout_overview_page.access_checkout_complete()
 
     @classmethod
     def to_shopping_cart(cls) -> CartPage:
