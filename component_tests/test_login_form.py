@@ -17,7 +17,12 @@ def test_locked_out_user_should_not_be_able_to_login(login_actions):
 
 
 def test_username_is_required(login_actions):
-    pass
+    login_actions.login_form.navigate()
+    login_actions.login_form.fill_user_password(User('standard user'))
+    login_actions.login_form.login.click()
+    login_actions.login_form.page.wait_for_url('**/')
+    expect(login_actions.login_form.user_name_is_required_error)\
+        .to_be_visible()
 
 
 def test_password_is_required(login_actions):

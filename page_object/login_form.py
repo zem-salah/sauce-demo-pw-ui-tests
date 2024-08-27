@@ -1,3 +1,4 @@
+from data.user import User
 from page_object.base_page import BasePage
 
 
@@ -10,3 +11,8 @@ class LoginFrom(BasePage):
         self.login = page.get_by_test_id('login-button')
         self.locked_out_user_error = page.get_by_test_id('error').filter(
             has_text='this user has been locked out')
+        self.user_name_is_required_error = page.get_by_test_id('error').filter(
+            has_text='username is required')
+
+    def fill_user_password(self, user: User):
+        self.password.fill(user.password)
