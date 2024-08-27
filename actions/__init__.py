@@ -3,7 +3,7 @@ import inspect
 import importlib
 
 
-def init_actions_module(context):
+def init_actions_module(page):
     """
     This method dynamically initialize action classes and add them
     in behave context object. Each action class is accessible in other
@@ -14,7 +14,7 @@ def init_actions_module(context):
         context.Login.login_as(user)
 
     Args:
-        context: The context in which to initialize the actions.
+        page: playwright Page instance.
     """
     actions_path = os.path.dirname(os.path.abspath(__file__))
     module_name = os.path.basename(actions_path)
@@ -27,4 +27,4 @@ def init_actions_module(context):
                 # If the class has a 'should_init' attribute set to True
                 if hasattr(obj, 'should_init') and obj.should_init \
                         and hasattr(obj, 'set_page'):
-                    obj.set_page(context.page)
+                    obj.set_page(page)

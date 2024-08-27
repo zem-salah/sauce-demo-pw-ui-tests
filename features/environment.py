@@ -21,7 +21,7 @@ def before_scenario(context, scenario):
     context.browser = context.pw.chromium.launch(
         headless=False, channel="chrome")
     context.page = context.browser.new_page()
-    init_actions_module(context)
+    init_actions_module(context.page)
     init_assertions_module(context)
 
 
