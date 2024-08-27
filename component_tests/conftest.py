@@ -7,16 +7,18 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-@pytest.fixture
+@pytest.fixture(scope='package')
 def pw_browser():
     with sync_playwright() as pw:
         pw.selectors.set_test_id_attribute('data-test')
         browser = pw.chromium.launch(headless=False)
         yield browser
+        browser.close()
 
 
 @pytest.fixture
 def login_actions(pw_browser):
-    page = pw_browser.new_page()
+    page = pw_browser.new_context().new_page()
     Login.set_page(page)
     yield Login
+    page.close()
