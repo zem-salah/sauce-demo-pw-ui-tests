@@ -1,7 +1,8 @@
 class User:
 
     _user_pretty_name_to_user_password = {
-        "standard user": ["standard_user", "secret_sauce"]
+        "standard user": ["standard_user", "secret_sauce"],
+        "locked out user": ["locked_out_user", "secret_sauce"],
     }
 
     def __init__(self, user_pretty_name):

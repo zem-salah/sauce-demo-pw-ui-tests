@@ -8,3 +8,5 @@ class LoginFrom(BasePage):
         self.username = page.get_by_test_id('username')
         self.password = page.get_by_test_id('password')
         self.login = page.get_by_test_id('login-button')
+        self.locked_out_user_error = page.get_by_test_id('error').filter(
+            has_text='this user has been locked out')
