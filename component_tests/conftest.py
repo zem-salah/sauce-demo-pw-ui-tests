@@ -1,24 +1,16 @@
 from actions.login_actions import Login
-
 import pytest
-from playwright.sync_api import sync_playwright
-from dotenv import load_dotenv
-
-load_dotenv()
 
 
-@pytest.fixture(scope='package')
-def pw_browser():
-    with sync_playwright() as pw:
-        pw.selectors.set_test_id_attribute('data-test')
-        browser = pw.chromium.launch(headless=False)
-        yield browser
-        browser.close()
+@pytest.fixture(scope='session')
+def playwright(playwright):
+    playwright.selectors.set_test_id_attribute('data-test')
+    yield playwright
+    playwright.stop()
 
 
 @pytest.fixture
-def login_actions(pw_browser):
-    page = pw_browser.new_context().new_page()
+def login_actions(page):
     Login.set_page(page)
     yield Login
     page.close()
