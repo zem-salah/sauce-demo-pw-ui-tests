@@ -41,6 +41,14 @@ Just copy the .env_sample, rename it to .env. it contains one env variable :
 
 ## Run tests
 
+End to end tests :
+
 ```bash
     behave
+```
+
+Component tests
+
+```bash
+    pytest --headed --full-page-screenshot --base-url https://www.saucedemo.com C:/playwright-test/component_tests --no-header --no-summary -q in C:\playwright-test\component_tests
 ```
